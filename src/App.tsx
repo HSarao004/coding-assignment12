@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Mybutton from './components/Mybutton/Mybutton'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import MyButton from './components/Mybutton/Mybutton';
+import Label from './components/Mybutton/Label/Label';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -30,9 +31,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-   <Mybutton label='Hello'></Mybutton>
+      <MyButton disabled={false} visible={true} disabledColor="grey">Contact Me</MyButton>
+      <Label color="blue">Hello, this is a label!</Label>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

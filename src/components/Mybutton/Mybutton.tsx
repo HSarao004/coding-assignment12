@@ -1,36 +1,36 @@
-import styled from "styled-components";
-import { MybuttonProps } from "./Mybutton.types";
+import React from 'react';
+import styled from 'styled-components';
+import { ButtonProps } from './Mybutton.types';
 
-const Stylebutton =styled.button<{disabled:boolean}>
-`
-background-color: ${({ disabled }) => (disabled ? 'grey' : 'blue')};
-color: white;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-font-size: 16px;
-font-weight: bold;
-transition: background-color 0.3s, transform 0.2s;
+const StyledButton = styled.button<{ disabled: boolean; visible: boolean; disabledColor: string }>`
+    background-color: ${({ disabled, disabledColor }) => (disabled ? disabledColor : 'blue')};
+    color: white; /* Ensure the text color is white */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    display: ${({ visible }) => (visible ? 'inline-block' : 'none')};
 
-&:hover {
-    background-color: ${({ disabled }) => (disabled ? 'grey' : 'darkblue')};
-    transform: ${({ disabled }) => (disabled ? 'none' : 'scale(1.05)')};
-}
+    &:hover {
+        background-color: ${({ disabled, disabledColor }) => (disabled ? disabledColor : 'darkblue')};
+        transform: ${({ disabled }) => (disabled ? 'none' : 'scale(1.05)')};
+    }
 
-&:active {
-    transform: ${({ disabled }) => (disabled ? 'none' : 'scale(0.95)')};
-}
+    &:active {
+        transform: ${({ disabled }) => (disabled ? 'none' : 'scale(0.95)')};
+    }
 
-&:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-}
-
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
 `;
-const Mybutton=({disabled=false,label="button"}:MybuttonProps) =>{
 
-    return <Stylebutton disabled={false}>hi</Stylebutton>;
-}
+const MyButton: React.FC<ButtonProps> = ({ children, disabled, visible = true, disabledColor = 'grey', ...props }) => {
+    return <StyledButton disabled={disabled} visible={visible} disabledColor={disabledColor} {...props}>{children}</StyledButton>;
+};
 
-export default Mybutton ;
+export default MyButton;
