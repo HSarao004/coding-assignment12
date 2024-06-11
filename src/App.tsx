@@ -3,7 +3,11 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import MyButton from './components/Mybutton/Mybutton';
-import Label from './components/Mybutton/Label/Label';
+import Label from './components/Label/Label';
+import Text from './components/Text';
+import Img from './components/Img/Img';
+import RadioButton from './components/RadioButton/RadioButton';
+import Dropdown from './components/Dropdown';
 
 
 function App() {
@@ -31,9 +35,28 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <MyButton disabled={false} visible={true} disabledColor="grey">Contact Me</MyButton>
-      <Label color="blue">Hello, this is a label!</Label>
+      <MyButton disabled={true } visible={true} disabledColor="red">Button component</MyButton>
+      <div>
+      <Label disabled={false} color="blue">Hello, this is a label component !</Label>
+      
+      <div><Text color="blue" disabled={false } visible={true}>This is a text component</Text>
+      </div>
+      </div>
+      <div>
+        <Img src="https://via.placeholder.com/150" alt="Placeholder" disabled={false} visible={true} disabledColor="brown" backgroundColor="lightblue" />
+    </div>
+    <div>
+    <RadioButton disabled={true} visible={true} disabledColor="pink" backgroundColor="black" />
+    
+    </div>
+    <div>
+        <Dropdown disabled={false} visible={true} backgroundColor="white" disabledBackgroundColor="lightgrey">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </Dropdown>
     </>
+    
   );
 }
 
